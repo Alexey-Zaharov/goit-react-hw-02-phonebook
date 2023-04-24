@@ -22,7 +22,9 @@ class App extends Component {
 
   newContact = data => {
     const { contacts } = this.state;
-    contacts.some(contacts => contacts.name === data.name)
+    contacts.some(
+      contacts => contacts.name.toLowerCase() === data.name.toLowerCase()
+    )
       ? window.alert(data.name + ' is already in contacts')
       : this.setState(prevState => {
           return {
@@ -48,7 +50,7 @@ class App extends Component {
         <h1>PhoneBook</h1>
         <ContactForm stateChange={this.newContact} />
         <h1>Contacts</h1>
-        <Filter onFilter={this.handleFilter} />
+        <Filter onFilter={this.handleFilter} filter={this.state.filter} />
         <ContactList data={filtredData} deleteContact={this.deleteContact} />
       </>
     );
