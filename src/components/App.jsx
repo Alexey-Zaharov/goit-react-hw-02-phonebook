@@ -23,7 +23,7 @@ class App extends Component {
   newContact = data => {
     const { contacts } = this.state;
     contacts.some(contacts => contacts.name === data.name)
-      ? window.alert(data.name + ' is alredy in contacts')
+      ? window.alert(data.name + ' is already in contacts')
       : this.setState(prevState => {
           return {
             contacts: [data, ...prevState.contacts],
